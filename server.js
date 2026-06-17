@@ -78,8 +78,11 @@ function sanitizeContent(input) {
     if (typeof input[key] === 'string') out[key] = input[key].trim().slice(0, key === 'description' ? 800 : 220);
   }
   return out;
-}
+} 
 
+app.get('/admin-victor-supply', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+});
 app.get('/api/content', (req, res) => res.json(readContent()));
 
 app.post('/api/login', (req, res) => {
