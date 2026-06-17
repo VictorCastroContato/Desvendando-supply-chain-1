@@ -102,7 +102,20 @@ app.get('/admin-victor-supply', (req, res) => {
 app.get('/admin-victor-supply/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
+app.get('/download', (req, res) => {
+  const filePath = path.join(
+    __dirname,
+    'public',
+    'assets',
+    'EBOOK-DESVENDANDO-A-SUPPLY-CHAIN-1.0.pdf'
+  );
 
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send('Arquivo PDF não encontrado.');
+  }
+
+  res.download(filePath, 'EBOOK DESVENDANDO A SUPPLY CHAIN 1.0.pdf');
+});
 // APIs
 app.get('/api/content', (req, res) => {
   res.json(readContent());
