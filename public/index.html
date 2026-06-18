@@ -26,7 +26,9 @@
           <span>PDF</span>
         </div>
         <div class="actions">
-          <a class="btn btn--primary" id="downloadButton" href="/download">Baixar ebook em PDF</a>
+          <button class="btn btn--primary" id="downloadButton" type="button">
+  Baixar ebook em PDF
+</button>
           <a class="btn btn--ghost" id="instagramButton" href="https://www.instagram.com/of_victorr" target="_blank" rel="noopener">Ver Instagram</a>
         </div>
       </div>
@@ -39,9 +41,53 @@
     <footer class="footer">
       <p><strong id="author">Victor Castro</strong> <span id="role">Assistente de Logística</span></p>
       <a id="instagramFooter" href="https://www.instagram.com/of_victorr" target="_blank" rel="noopener">@of_victorr</a>
-      <small id="footerNote">Compartilhando conhecimento para apoiar o crescimento profissional na área de Supply Chain.</small>
+      <small id="footerNote">
+  Conteúdo autoral. Todos os direitos reservados a Victor Castro.
+</small>
     </footer>
   </main>
+  <div class="email-modal" id="emailModal">
+  <div class="email-modal-card">
+    <button class="email-modal-close" id="closeEmailModal" type="button">×</button>
+
+    <div class="email-modal-badge">Download gratuito</div>
+
+    <h2>Receba acesso ao ebook</h2>
+
+    <p>
+      Informe seu e-mail para liberar o download do ebook
+      <strong>Desvendando a Supply Chain</strong>.
+    </p>
+
+    <form id="downloadForm" class="email-form">
+      <label for="leadEmail">Seu melhor e-mail</label>
+
+      <input
+        type="email"
+        id="leadEmail"
+        name="email"
+        placeholder="exemplo@email.com"
+        required
+      />
+
+      <label class="consent-box">
+        <input type="checkbox" id="leadConsent" required />
+        <span>
+          Autorizo receber o link do ebook e uma mensagem futura com questionário
+          de avaliação sobre o conteúdo.
+        </span>
+      </label>
+
+      <button type="submit" class="email-submit">
+        Liberar download
+      </button>
+
+      <small>
+        Seu e-mail será usado apenas para comunicações relacionadas a este ebook.
+      </small>
+    </form>
+  </div>
+</div>
   <script src="/script.js"></script>
 </body>
 </html>
