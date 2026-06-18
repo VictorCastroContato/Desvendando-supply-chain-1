@@ -116,6 +116,40 @@ app.get('/download', (req, res) => {
 
   res.download(filePath, 'EBOOK DESVENDANDO A SUPPLY CHAIN 1.0.pdf');
 });
+app.post('/api/register-download', async (req, res) => {
+  const { email, consent } = req.body;
+
+  if (!email || !consent) {
+    return res.status(400).json({
+      error: 'E-mail e consentimento são obrigatórios.'
+    });
+  }
+
+  try {
+    const response = await fetch(process.env.GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        consent
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao registrar e-mail na planilha.');
+    }
+
+    res.json({ ok: true });
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      error: 'Erro ao salvar e-mail.'
+    });
+  }
+});
 // APIs
 app.get('/api/content', (req, res) => {
   res.json(readContent());
